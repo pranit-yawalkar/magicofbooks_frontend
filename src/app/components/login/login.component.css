@@ -1,0 +1,14 @@
+.form-container {
+    width: 30%;
+    margin: auto;
+}
+
+.form-danger {
+    border: 1px solid red;
+}
+
+@media screen and (max-width: 1200px) {
+    .form-container {
+        width: 90%;
+    }
+}

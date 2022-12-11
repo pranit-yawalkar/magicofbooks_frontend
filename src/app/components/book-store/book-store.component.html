@@ -1,0 +1,32 @@
+<div class="container mt-5">
+    <div class="d-flex justify-content-between">
+        <h2>Welcome to Book Store...</h2>
+        <div>
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Sort by</option>
+                <option value="1">Name A to Z </option>
+                <option value="2">Name Z to A</option>
+                <option value="3">Price Low to High</option>
+                <option value="3">Price High to Low</option>
+            </select>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row my-5">
+            <div class="col-md-3" *ngFor="let book of books">
+                <div class="card border shadow">
+                    <img class="book-img"
+                        src="https://rukminim1.flixcart.com/image/416/416/juk4gi80/book/4/6/6/wings-of-fire-original-imaffmk4gx5pxqvf.jpeg?q=70"
+                        alt="">
+                    <div class="book-info my-3 text-center">
+                        <h3>{{book.bookName}}</h3>
+                        <i class="mb-2">Category: <span class="fw-light">{{book.category.categoryName}} </span></i>
+                        <p>{{book.bookDesc.substr(0, 50)}}</p>
+                        <button class="btn btn-sm btn-primary mx-2 rounded-0">Add to wishlist</button>
+                        <button class="btn btn-sm btn-outline-primary rounded-0">Add to Completed</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

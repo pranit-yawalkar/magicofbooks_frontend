@@ -1,0 +1,93 @@
+<!-- <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/">Magic of Books</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" routerLink="/" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact: true}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" routerLink="/admin-dashboard" routerLinkActive="active"
+                        *ngIf="rolesMatch('admin')">Admin Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" routerLink="/user-dashboard" routerLinkActive="active"
+                        *ngIf="rolesMatch('user')">User
+                        Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" routerLink="/about" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{exact: true}">About Us</a>
+                </li>
+            </ul>
+            <button class="btn btn-warning rounded-0" routerLink="/login" *ngIf="!isLoggedIn()">Login</button>
+            <button (click)="logout()" *ngIf="isLoggedIn()" class="btn btn-danger rounded-0">Logout</button>
+        </div>
+    </div>
+</nav> -->
+
+<header id="header">
+    <nav id="navbar">
+        <div class="container">
+            <div class="nav-container d-flex justify-content-between">
+                <div class="d-flex justify-content-between">
+                    <div class="logo" routerLink="/">
+                        <h1>MAGIC OF BOOKS</h1>
+                    </div>
+                    <div class="menu-icon" [class.menuIconClass]="showMenuIcon" (click)="toggleMenu()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+                <div class="">
+
+                    <div class="menu" [class.menuClass]="showMenu">
+                        <ul>
+                            <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}"
+                                    (click)="toggleMenu()">Home</a></li>
+                            <li><a routerLink="/about" routerLinkActive="active" (click)="toggleMenu()">About</a></li>
+                            <li><a routerLink="/books" routerLinkActive="active" (click)="toggleMenu()">Book Store</a>
+                            </li>
+                            <div *ngIf="isLoggedIn() && !(isHandset$ | async)" ngbDropdown class="d-inline-block m-2">
+                                <button type="button" class="btn-outline" id="dropdownBasic1" ngbDropdownToggle>
+                                    Dashboard</button>
+                                <div class="drop-down dropdown-menu-dark" ngbDropdownMenu
+                                    aria-labelledby="dropdownBasic1">
+                                    <button *ngIf="isAdmin" routerLink="/user/profile" ngbDropdownItem><i
+                                            class="bi bi-person-fill"></i>Admin Dashboard</button>
+                                    <button routerLink="/user/profile" ngbDropdownItem><i class="bi bi-person-fill"></i>
+                                        My Profile</button>
+                                    <button routerLink="/user/wishlist" ngbDropdownItem><i class="bi bi-heart-fill"></i>
+                                        My Wishlist</button>
+                                    <button routerLink="/user/completed-list" ngbDropdownItem><i
+                                            class="bi bi-check-circle-fill"></i> Completed
+                                        Books</button>
+                                </div>
+                            </div>
+                            <li *ngIf="(isHandset$ | async)" (click)="toggleMenu()"><a routerLink="/user/profile">My
+                                    Profile</a></li>
+                            <li *ngIf="(isHandset$ | async)" (click)="toggleMenu()"><a routerLink="/user/wishlist">My
+                                    Wishlist</a></li>
+                            <li *ngIf="(isHandset$ | async)" (click)="toggleMenu()"><a
+                                    routerLink="/user/completed-list">Completed Books</a></li>
+                            <div class="mt-2">
+                                <button class="btn-outline mx-2" *ngIf="!isLoggedIn()" routerLink="/login"
+                                    routerLinkActive="active" (click)="toggleMenu()">Login</button>
+
+
+                                <button class="btn-fill" *ngIf="isLoggedIn()" (click)="logout()">Logout</button>
+                                <button class="btn-fill" *ngIf="!isLoggedIn()" routerLink="/register">Signup</button>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

@@ -1,0 +1,34 @@
+<div>
+    <div class="hero-img">
+        <div class="container">
+            <h1>Welcome to <strong class="text-danger">MAGIC OF BOOKS</strong></h1>
+            <h3 class="mb-3">The only destination to read your favourite book</h3>
+            <button class="btn btn-primary rounded-0">Read Now</button>
+        </div>
+    </div>
+    <div class="card border shadow text-center py-4">
+        <h2><i>"Books are a uniquely portable magic"</i></h2>
+        <h6>-Stephen King</h6>
+    </div>
+    <div class="container my-5">
+        <h2 class="text-center">Available Books</h2>
+        <div class="row my-5">
+            <div class="col-lg-4 col-md-6" *ngFor="let book of books">
+                <div class="card border shadow">
+                    <img class="book-img"
+                        src="https://rukminim1.flixcart.com/image/416/416/juk4gi80/book/4/6/6/wings-of-fire-original-imaffmk4gx5pxqvf.jpeg?q=70"
+                        alt="">
+                    <div class="book-info my-3 text-center">
+                        <h3>{{book.bookName}}</h3>
+                        <i class="mb-2">Category: <span class="fw-light">{{book.category.categoryName}} </span></i>
+                        <p>{{book.bookDesc.substr(0, 50)}}</p>
+                        <button class="btn btn-sm btn-primary mx-2 rounded-0" (click)="addToWishlist(book.bookId)">Add
+                            to wishlist</button>
+                        <button class="btn btn-sm btn-outline-primary rounded-0"
+                            (click)="addToCompleted(book.bookId)">Add to Completed</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

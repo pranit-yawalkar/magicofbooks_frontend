@@ -1,0 +1,66 @@
+<div class="form-container mt-4">
+    <div class="card border shadow py-4">
+        <h3 class="text-center mb-3">Register Form</h3>
+        <form [formGroup]="registerForm">
+            <div class="container reg-container">
+                <div class="col-md-4 profile">
+                    <img class="profile-img"
+                        [src]="this.userImage.url ? this.userImage.url  : '../../../assets/images/account.png'"
+                        alt="user">
+                    <input class="mt-4" type="file" multiple value="select" #selectFile
+                        (change)="onFileSelected($event)">
+                </div>
+                <div class="col-md-8 form-fields">
+                    <div>
+                        <label for="firstName">First Name: </label>
+                        <input class="form-control"
+                            [ngClass]="{'form-danger': f['firstName'].touched && f['firstName'].invalid}" type="text"
+                            formControlName="firstName" placeholder="Enter your first name">
+                        <small class="text-danger" *ngIf="f['firstName']?.touched && f['firstName']?.invalid">This
+                            field
+                            is invalid</small><br>
+                    </div>
+                    <div>
+                        <label for="lastName">Last Name: </label>
+                        <input class="form-control"
+                            [ngClass]="{'form-danger': f['lastName'].touched && f['lastName'].invalid}" type="text"
+                            formControlName="lastName" placeholder="Enter your last name">
+                        <small class="text-danger" *ngIf="f['lastName'].touched && f['lastName'].invalid">This
+                            field
+                            is invalid</small><br>
+                    </div>
+                    <div>
+                        <label for="email">Email: </label>
+                        <input class="form-control"
+                            [ngClass]="{'form-danger': f['email'].touched && f['email'].invalid}" type="email"
+                            formControlName="email" placeholder="Enter your email">
+                        <small class="text-danger" *ngIf="f['email'].touched && f['email'].invalid">This
+                            field
+                            is invalid</small><br>
+                    </div>
+                    <div>
+                        <label for="password">Password: </label><br>
+                        <input class="form-control"
+                            [ngClass]="{'form-danger': f['password'].touched && f['password'].invalid}" type="password"
+                            formControlName="password" placeholder="Enter your password">
+                        <small class="text-danger" *ngIf="f['password'].touched && f['password'].invalid">This
+                            field
+                            is
+                            invalid</small><br>
+                    </div>
+                    <div>
+                        <label for="cpassword">Confirm Password: </label><br>
+                        <input class="form-control"
+                            [ngClass]="{'form-danger': f['cpassword'].touched && f['cpassword'].invalid}"
+                            type="password" formControlName="cpassword" placeholder="Enter your password again">
+                        <small class="text-danger" *ngIf="f['cpassword'].touched && f['cpassword'].invalid">This
+                            field
+                            is
+                            invalid</small>
+                    </div>
+                    <button (click)="formSubmit()" class="btn btn-primary rounded-0 my-4 w-100">Register</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

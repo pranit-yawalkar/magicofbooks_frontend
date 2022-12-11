@@ -1,0 +1,24 @@
+<div class="container my-5">
+    <h2 class="text-center">My Wishlist <i class="bi bi-heart-fill text-danger"></i></h2>
+    <div *ngIf="wishlistItems && wishlistItems.length > 0; else elseTemplate" class="row my-5">
+        <div class="col-lg-4 col-md-6" *ngFor="let wishlistItem of wishlistItems">
+            <div class="card border shadow">
+                <img src="https://booxoul.com/wp-content/uploads/2022/04/Understanding-The-Resilience-And-The-True-Journey-Of-Indias-Missile-Man-A-Book-Review-Of-Wings-Of-Fire-An-Autobiography-By-APJ-Abdul-Kalam.jpeg"
+                    alt="">
+                <div class="book-info my-3 text-center">
+                    <h3>{{wishlistItem.book.bookName}}</h3>
+                    <i class="mb-2">Category: <span class="fw-light">{{wishlistItem.book.category.categoryName}}
+                        </span></i>
+                    <p>{{wishlistItem.book.bookDesc.substr(0, 50)}}</p>
+                    <button class="btn btn-sm btn-danger mx-2 rounded-0">Remove</button>
+                    <button class="btn btn-sm btn-outline-primary rounded-0">Add to Completed</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #elseTemplate>
+        <div class="card border shadow mt-5">
+            <h4 class="text-center text-danger py-3">No Books in the Wishlist!!</h4>
+        </div>
+    </ng-template>
+</div>

@@ -1,0 +1,27 @@
+<div class="form-container mt-5">
+    <div class="card border shadow py-4">
+        <h3 class="text-center mb-3">Login Form</h3>
+        <form [formGroup]="loginForm">
+            <div class="container px-5">
+                <div>
+                    <label for="email">Email: </label>
+                    <input class="form-control" [ngClass]="{'form-danger': f['email'].touched && f['email'].invalid}"
+                        type="email" formControlName="email" placeholder="Enter your email">
+                    <small class="text-danger" *ngIf="f['username']?.touched && f['username']?.invalid">This field
+                        is invalid</small><br>
+                </div>
+                <div>
+                    <label for="password">Password: </label><br>
+                    <input class="form-control"
+                        [ngClass]="{'form-danger': f['password'].touched && f['password'].invalid}" type="password"
+                        formControlName="password" placeholder="Enter your password">
+                    <small class="text-danger" *ngIf="f['password'].touched && f['password'].invalid">This field
+                        is
+                        invalid</small>
+                </div>
+                <button (click)="formSubmit()" class="btn btn-success rounded-0 my-4 w-100"
+                    [disabled]="loginForm.invalid">Login</button>
+            </div>
+        </form>
+    </div>
+</div>

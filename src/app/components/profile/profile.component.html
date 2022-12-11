@@ -1,0 +1,94 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card border shadow py-4">
+                <h3 class="text-center mt-2 mb-4">User Profile</h3>
+                <div class="user-details-container">
+                    <div>
+                        <img class="profile-img"
+                            [src]="this.profile.userImage ? this.profile.userImage.url : '../../../assets/images/account.png'"
+                            alt="profile">
+                    </div>
+                    <div class="user-details py-4">
+                        <div class="user-detail">
+                            <label class="user-label" for="firstName">First Name: </label>
+                            <p>{{profile.firstName}}</p>
+                        </div>
+                        <div class="user-detail">
+                            <label class="user-label" for="lastName">Last Name: </label>
+                            <p>{{profile.lastName}}</p>
+                        </div>
+                        <div class="user-detail">
+                            <label class="user-label" for="email">Email Id: </label>
+                            <p>{{profile.email}}</p>
+                        </div>
+                        <div class="btn-container mt-3">
+                            <button type="button" class="btn btn-info rounded-0" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal" (click)="onClickUpdateModal()">Edit Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="editProfileForm">
+                    <div class="container reg-container">
+                        <div class="col-md-4 profile">
+                            <img class="profile-img"
+                                [src]="this.userImage ? this.userImage.url  : this.profile.userImage.url" alt="user">
+                            <input class="mt-4 img-input" type="file" multiple value="select" #selectFile
+                                (change)="onFileSelected($event)">
+                        </div>
+                        <div class="col-md-8 form-fields">
+                            <div>
+                                <label for="firstName">First Name: </label>
+                                <input class="form-control"
+                                    [ngClass]="{'form-danger': f['firstName'].touched && f['firstName'].invalid}"
+                                    type="text" formControlName="firstName" placeholder="Enter your first name">
+                                <small class="text-danger"
+                                    *ngIf="f['firstName']?.touched && f['firstName']?.invalid">This
+                                    field
+                                    is invalid</small><br>
+                            </div>
+                            <div>
+                                <label for="lastName">Last Name: </label>
+                                <input class="form-control"
+                                    [ngClass]="{'form-danger': f['lastName'].touched && f['lastName'].invalid}"
+                                    type="text" formControlName="lastName" placeholder="Enter your last name">
+                                <small class="text-danger" *ngIf="f['lastName'].touched && f['lastName'].invalid">This
+                                    field
+                                    is invalid</small><br>
+                            </div>
+                            <div>
+                                <label for="email">Email: </label>
+                                <input class="form-control"
+                                    [ngClass]="{'form-danger': f['email'].touched && f['email'].invalid}" type="email"
+                                    formControlName="email" placeholder="Enter your email">
+                                <small class="text-danger" *ngIf="f['email'].touched && f['email'].invalid">This
+                                    field
+                                    is invalid</small><br>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button #closeModal type="button" class="btn btn-secondary rounded-0"
+                    data-bs-dismiss="modal">Close</button>
+                <button type="button" (click)="formSubmit()" class="btn btn-primary rounded-0">Save
+                    changes</button>
+            </div>
+        </div>
+    </div>
+</div>
